@@ -7,7 +7,10 @@ struct NodeRBT {
     NodeRBT* left;
     NodeRBT* right;
     int color;
+    int height;
 };
+
+
 
 typedef NodeRBT* NodeRBTPtr;
 
@@ -30,6 +33,16 @@ private:
             preOrderHelper(NodeRBT->left);
             preOrderHelper(NodeRBT->right);
         }
+    }
+
+    int heightHelper(NodeRBTPtr NodeRBT) {
+        int l, r, h = 0;
+        if (NodeRBT != NULL) {
+            l = heightHelper(NodeRBT->left);
+            r = heightHelper(NodeRBT->right);
+            h = ((l > r) ? l : r) + 1;
+        }
+        return h;
     }
 
     void inOrderHelper(NodeRBTPtr NodeRBT) {
@@ -267,6 +280,10 @@ public:
 
     void preorder() {
         preOrderHelper(this->root);
+    }
+
+    void height() {
+        cout << heightHelper(this->root) - 1;
     }
 
     void inorder() {

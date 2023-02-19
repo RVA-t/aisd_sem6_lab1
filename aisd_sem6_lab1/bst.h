@@ -79,3 +79,13 @@ NodeBST* deleteNodeBST(struct NodeBST* root, int key) {
     }
     return root;
 }
+
+int height(NodeBST* p) {
+    int l, r, h = 0;
+    if (p != NULL) {
+        l = height(p->left);
+        r = height(p->right);
+        h = ((l > r) ? l : r) + 1;
+    }
+    return h;
+}

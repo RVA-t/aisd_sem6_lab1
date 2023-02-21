@@ -14,18 +14,6 @@ NodeBST* newNodeBST(int item) {
     return temp;
 }
 
-void inorder(struct NodeBST* root) {
-    if (root != NULL) {
-
-        inorder(root->left);
-
-        cout << root->key << " -> ";
-
-        inorder(root->right);
-    }
-}
-
-
 NodeBST* insert(struct NodeBST* NodeBST, int key) {
 
     if (NodeBST == NULL) return newNodeBST(key);

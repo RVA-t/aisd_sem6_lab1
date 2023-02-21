@@ -27,14 +27,6 @@ private:
         NodeRBT->color = 0;
     }
 
-    void preOrderHelper(NodeRBTPtr NodeRBT) {
-        if (NodeRBT != TNULL) {
-            cout << NodeRBT->data << " ";
-            preOrderHelper(NodeRBT->left);
-            preOrderHelper(NodeRBT->right);
-        }
-    }
-
     int heightHelper(NodeRBTPtr NodeRBT) {
         int l, r, h = 0;
         if (NodeRBT != NULL) {
@@ -44,23 +36,7 @@ private:
         }
         return h;
     }
-
-    void inOrderHelper(NodeRBTPtr NodeRBT) {
-        if (NodeRBT != TNULL) {
-            inOrderHelper(NodeRBT->left);
-            cout << NodeRBT->data << " ";
-            inOrderHelper(NodeRBT->right);
-        }
-    }
-
-    void postOrderHelper(NodeRBTPtr NodeRBT) {
-        if (NodeRBT != TNULL) {
-            postOrderHelper(NodeRBT->left);
-            postOrderHelper(NodeRBT->right);
-            cout << NodeRBT->data << " ";
-        }
-    }
-
+    
     NodeRBTPtr searchTreeHelper(NodeRBTPtr NodeRBT, int key) {
         if (NodeRBT == TNULL || key == NodeRBT->data) {
             return NodeRBT;
@@ -278,20 +254,8 @@ public:
         root = TNULL;
     }
 
-    void preorder() {
-        preOrderHelper(this->root);
-    }
-
     void height() {
         cout << heightHelper(this->root) - 1;
-    }
-
-    void inorder() {
-        inOrderHelper(this->root);
-    }
-
-    void postorder() {
-        postOrderHelper(this->root);
     }
 
     NodeRBTPtr searchTree(int k) {

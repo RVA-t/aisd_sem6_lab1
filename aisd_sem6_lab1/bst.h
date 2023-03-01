@@ -1,5 +1,11 @@
 #include <iostream>
+#include <chrono>
+
+using namespace std::chrono;
 using namespace std;
+
+auto start = chrono::steady_clock::now();
+auto end = chrono::steady_clock::now();
 
 class NodeBST {
 public:

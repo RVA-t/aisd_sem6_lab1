@@ -3,45 +3,47 @@
 int main() {
     NodeAVL* avl = NULL;
 
-    for (int i = 0; i < 1000; i++) {
-        avl = insertNode(avl, i);
-    }
-    /*avl = insertNode(avl, 1);
-    avl = insertNode(avl, 2);
-    avl = insertNode(avl, 3);
-    avl = insertNode(avl, 4);
-    avl = insertNode(avl, 5);
-    avl = insertNode(avl, 6);
-    avl = insertNode(avl, 7);
-    avl = insertNode(avl, 8);*/
-
-    //printTree(avl, "", true);
-    //cout << height(avl);
-    //cout << endl;
-    //printTree(avl, "", true);
-    //avl = deleteNodeAVL(avl, 13);
-    //cout << "After deleting " << endl;
-    //printTree(avl, "", true);
-    
-
     RedBlackTree rbt;
 
-    for (int i = 0; i < 10; i++) {
-        rbt.insert(i);
-    }
-
-    rbt.printTree();
-    cout << endl;
-    rbt.height();
-    cout << endl;
 
 
     struct NodeBST* bst = NULL;
+    int x;
 
-    for (int i = 0; i < 1000; i++) {
-        bst = insert(bst, i);
+
+    auto savl = chrono::steady_clock::now();
+
+    for (int i = 0; i < 5000; i++) {
+        x = rand();
+        avl = insertNode(avl, x);
     }
-    //cout << endl;
-    //cout << height(bst);
+    auto eavl = chrono::steady_clock::now();
+    auto durationavl = chrono::duration_cast<std::chrono::nanoseconds>(eavl - savl);
+
+
+    auto srbt = chrono::steady_clock::now();
+    for (int i = 0; i < 5000; i++) {
+        x = rand();
+        rbt.insert(x);
+    }
+    auto erbt = chrono::steady_clock::now();
+    auto durationrbt = chrono::duration_cast<std::chrono::nanoseconds>(erbt - srbt);
+
+
+
+
+    
+    cout << "Duration rbt = " << durationrbt.count() << endl;
+    cout << "Duration avl = " << durationavl.count() << endl;
+
+    cout << "avl tree ";
+    cout << height(avl);
+    cout << endl;
+    cout << "rbt tree ";
+    rbt.height();
+    cout << endl;
+
+    cout << "bst tree ";
+    cout << height(bst);
     //cout << endl;
 }
